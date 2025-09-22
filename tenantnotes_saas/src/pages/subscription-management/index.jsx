@@ -58,7 +58,7 @@ const SubscriptionManagement = () => {
         setBillingHistoryError(null); // Clear previous errors
         const token = localStorage.getItem('authToken');
         console.log('Using token for billing history fetch:', token);
-        const response = await fetch(`/tenants/${tenant.slug}/billing-history`, {
+        const response = await fetch(`/api/tenants/${tenant.slug}/billing-history`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -126,7 +126,7 @@ const SubscriptionManagement = () => {
         throw new Error('Tenant slug is undefined');
       }
       const token = localStorage.getItem('authToken');
-      const response = await fetch(`/tenants/${tenant.slug}/upgrade`, {
+      const response = await fetch(`/api/tenants/${tenant.slug}/upgrade`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -150,7 +150,7 @@ const SubscriptionManagement = () => {
       }));
 
       // Refresh billing history from backend
-      const billingResponse = await fetch(`/tenants/${tenant.slug}/billing-history`, {
+      const billingResponse = await fetch(`/api/tenants/${tenant.slug}/billing-history`, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem('authToken')}`,
         },

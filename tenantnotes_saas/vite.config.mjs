@@ -16,28 +16,6 @@ export default defineConfig({
     port: "4028",
     host: "0.0.0.0",
     strictPort: true,
-    allowedHosts: ['.amazonaws.com', '.builtwithrocket.new'],
-    proxy: {
-      '/tenants': {
-        target: 'http://localhost:4000',
-        changeOrigin: true,
-        secure: false,
-      },
-      '/notes': {
-        target: 'http://localhost:4000',
-        changeOrigin: true,
-        secure: false,
-      },
-      '/login': {
-        target: 'http://localhost:4000',
-        changeOrigin: true,
-        secure: false,
-      },
-      '/seed': {
-        target: 'http://localhost:4000',
-        changeOrigin: true,
-        secure: false,
-      }
-    }
+    allowedHosts: ['.amazonaws.com', '.builtwithrocket.new']
   }
 });

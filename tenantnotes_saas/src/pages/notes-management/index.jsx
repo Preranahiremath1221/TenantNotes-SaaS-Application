@@ -43,7 +43,7 @@ const NotesManagement = () => {
   const fetchNotes = async () => {
     if (!user?.token) return;
     try {
-      const response = await axios.get('http://localhost:4000/notes', {
+      const response = await axios.get('/api/notes', {
         headers: { Authorization: `Bearer ${user.token}` },
       });
       setNotes(response.data);
@@ -128,12 +128,12 @@ const NotesManagement = () => {
       const headers = { Authorization: `Bearer ${user.token}` };
 
       if (currentView === 'create') {
-        await axios.post('http://localhost:4000/notes', {
+        await axios.post('/api/notes', {
           title: noteData.title,
           content: noteData.content,
         }, { headers });
       } else if (currentView === 'edit') {
-        await axios.put(`http://localhost:4000/notes/${noteData.id}`, {
+        await axios.put(`/api/notes/${noteData.id}`, {
           title: noteData.title,
           content: noteData.content,
         }, { headers });
@@ -160,7 +160,7 @@ const NotesManagement = () => {
 
     try {
       const headers = { Authorization: `Bearer ${user.token}` };
-      await axios.delete(`http://localhost:4000/notes/${noteId}`, { headers });
+      await axios.delete(`/api/notes/${noteId}`, { headers });
 
       await fetchNotes();
       setDeleteDialog({ isOpen: false, note: null });
